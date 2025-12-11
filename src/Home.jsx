@@ -120,7 +120,7 @@ const[num1,setNum1]=useState(0);
     </div>
   )
 }
-
 export default Home
+
 
 
