@@ -83,7 +83,7 @@ const Home = () => {
     }
 
     if (parseInt(answer) === correctAnswer) {
-      setMessage('✅ Correct');
+      setMessage('✅ Correct'+newmsg);
       setScore(score + 1);
     } else {
       setMessage(`❌❌❌
@@ -154,6 +154,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 
