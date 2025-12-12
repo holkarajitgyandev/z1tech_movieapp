@@ -55,6 +55,9 @@ const Home = () => {
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState('Try It');
+  const[report,setReport]=useState([]);
+
+  let newmsg='';
 
   const generateQuestion = () => {
     let operators = ['+', '-', '*'];
@@ -69,6 +72,7 @@ const Home = () => {
 
   const checkAnswer = (e) => {
     e.preventDefault();
+    heartCount();
     let correctAnswer;
 
     switch (operator) {
@@ -82,16 +86,26 @@ const Home = () => {
       setMessage('✅ Correct');
       setScore(score + 1);
     } else {
-      setMessage(`❌ Correct Answer is ${correctAnswer}`);
+      setMessage(`❌❌❌
+                correct Answer is ${correctAnswer}`)
     }
     if(score===5){setMessage('GOOD ⭐⭐⭐')};
         if(score===10){setMessage("YOU ARE ⭐⭐⭐⭐⭐")};
-
+     setReport(prev=>[...prev,{question:`${num1}${operator}${num2}`,your_answer:answer,correctAnswer}])
     setTimeout(generateQuestion, 5000);
   };
+   const heartCount=()=>{
+        if(score%2===0){
+            let count=score/2
+            for(let i=0;i<count;i++){
+                newmsg=newmsg+"❤️"
+            }
+        }
+    }
 
   return (
     <div style={{ backgroundColor: 'aqua', borderRadius: '10px', textAlign: 'center',height:'100vh',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
+      <div>
       <h1 style={{color:'red'}}>Your math Practice Application:</h1>
       <h1>{num1}{operator}{num2} = ?</h1>
 
@@ -112,13 +126,35 @@ const Home = () => {
         </button>
       </form>
 
-      <h1>{message}</h1>
-      <h4>Score: {score}</h4>
+      <h1  style={{ whiteSpace: "pre-line" }}>{message}</h1>
+      
+        </div>
+       <div>
+            <h4>Score: {score}</h4>
+            <table>
+                <thead>Your report</thead>
+                <tbody>
+                    <tr>
+                        <th>question</th>
+                        <th>your answer</th>
+                        <th>correct answer</th>
+                    </tr>
+                    {report?.map((curEle,i)=>(
+                        <tr key={i}>
+                            <td>{curEle.question}</td>
+                            <td style={{color:curEle.your_answer==curEle.correctAnswer?'green':'red'}}>{curEle.your_answer}</td>
+                            <td style={{color:'green'}}>{curEle.correctAnswer}</td>
+                        </tr>
+                          ))}
+                </tbody>
+            </table>
+        </div>
     </div>
   );
 };
 
 export default Home;
+
 
 
 
