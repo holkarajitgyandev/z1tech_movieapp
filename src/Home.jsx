@@ -92,7 +92,7 @@ const Home = () => {
 
   return (
     <div style={{ backgroundColor: 'aqua', borderRadius: '10px', textAlign: 'center',height:'100vh',display:flex,flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
-      <h1 style={color:"red"}>You math Practice Application:</h1>
+      <h1 style={{color:'red'}}>Your math Practice Application:</h1>
       <h1>{num1}{operator}{num2} = ?</h1>
 
       <form onSubmit={checkAnswer}>
@@ -119,4 +119,5 @@ const Home = () => {
 };
 
 export default Home;
+
 
