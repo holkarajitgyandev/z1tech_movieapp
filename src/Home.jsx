@@ -45,7 +45,7 @@ const Home = () => {
       
 //     </div>
 //   )
-//}
+
 
     //Math question generator part for PAYAL
 const[num1,setNum1]=useState(0);
@@ -121,6 +121,7 @@ const[num1,setNum1]=useState(0);
   )
 }
 export default Home
+
 
 
 
