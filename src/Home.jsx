@@ -84,12 +84,15 @@ const Home = () => {
     } else {
       setMessage(`❌ Correct Answer is ${correctAnswer}`);
     }
+    if(score===5){setMessage('GOOD ⭐⭐⭐')};
+        if(score===10){setMessage("YOU ARE ⭐⭐⭐⭐⭐")};
 
     setTimeout(generateQuestion, 5000);
   };
 
   return (
-    <div style={{ backgroundColor: 'aqua', borderRadius: '10px', textAlign: 'center' }}>
+    <div style={{ backgroundColor: 'aqua', borderRadius: '10px', textAlign: 'center',height:'100vh',display:flex,flexDirection:'column',alignItems:'center',justifyContent:'center' }}>
+      <h1 style={color:"red"}>You math Practice Application:</h1>
       <h1>{num1}{operator}{num2} = ?</h1>
 
       <form onSubmit={checkAnswer}>
@@ -116,3 +119,4 @@ const Home = () => {
 };
 
 export default Home;
+
